@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd"
+         version="2.4">
+         
+  <servlet>
+    <servlet-name>CewolfServlet</servlet-name>
+    <servlet-class>de.laures.cewolf.CewolfRenderer</servlet-class>
+	<!-- sets storage implementation -->
+    <init-param>
+        <param-name>storage</param-name>
+        <param-value>de.laures.cewolf.storage.TransientSessionStorage</param-value>
+    </init-param>
+	<!-- sets overlib.js location relative to webapp -->
+    <init-param>
+        <param-name>overliburl</param-name>
+        <param-value>overlib.js</param-value>
+    </init-param>
+	<!-- turn on or off debugging logging -->
+    <init-param>
+        <param-name>debug</param-name>
+        <param-value>true</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>CewolfServlet</servlet-name>
+    <url-pattern>/cewolf/*</url-pattern>
+  </servlet-mapping>
+
+  <session-config>
+    <session-timeout>1</session-timeout>
+  </session-config>
+
+  <mime-mapping>
+      <extension>css</extension>
+      <mime-type>text/css</mime-type>
+  </mime-mapping>
+
+  <welcome-file-list>
+  	<welcome-file>
+      index.html
+    </welcome-file>
+  	<welcome-file>
+      index.htm
+    </welcome-file>
+  </welcome-file-list>
+  
+
+</web-app>
